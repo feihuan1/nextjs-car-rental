@@ -14,7 +14,7 @@ const Discover = async () => {
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
   return (
-    <div className="mt-12 sm:px-16 px-6 py-4 max-w-[1440px]" id="discover">
+    <div className="mt-12 sm:px-16 px-6 py-4  mx-auto" id="discover">
       <div className="flex flex-col items-start justify-start gap-y-2.5 text-black-100">
         <h1 className="text-4xl font-extrabold">Catalogue</h1>
         <p>Explore the cars you might like</p>
