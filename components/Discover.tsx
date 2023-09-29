@@ -1,9 +1,18 @@
 import React from "react";
 
+import { fetchCars } from "@/utils";
 import SearchBar from "./SearchBar";
 import CustomFilter from "./CustomFilter";
 
-const Discover = () => {
+import CarCard from "./CarCard";
+
+const Discover = async () => {
+
+  const allCars = await fetchCars()
+
+
+  const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
+
   return (
     <div className="mt-12 sm:px-16 px-6 py-4 max-w-[1440px]" id="discover">
       <div className="flex flex-col items-start justify-start gap-y-2.5 text-black-100">
@@ -19,6 +28,22 @@ const Discover = () => {
           <CustomFilter title="year" />
         </div>
       </div>
+
+        {!isDataEmpty ? (
+          <section>
+            <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14">
+              {allCars.map(car => <CarCard car={car} />)}
+            </div>
+          </section>
+        ): (
+          <div className="mt-16 flex justify-center items-center flex-col gap-2">
+            <h2 className="text-black text-xl font-bold">
+              Oops, no cars found
+            </h2>
+            {allCars?.message}
+          </div>
+        )}
+
     </div>
   );
 };
