@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Fragment } from "react";
+import React,{ useState, Fragment } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Listbox, Transition } from "@headlessui/react";
@@ -8,12 +8,14 @@ import { Listbox, Transition } from "@headlessui/react";
 import { CustomFilterProps } from "@/types";
 import { updatedSearchParams } from "@/utils";
 
+
+
 const CustomFilter = ({ title, options }: CustomFilterProps) => {
   const [selected, setSelected] = useState(options[0]);
 
   const router = useRouter();
 
-  const handleUpdatedParams = (e: { type: string; value: string }) => {
+  const handleUpdatedParams = (e: { title: string; value: string }) => {
     const newPathName = updatedSearchParams(title, e.value.toLowerCase());
 
     router.push(newPathName);

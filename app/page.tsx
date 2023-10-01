@@ -1,10 +1,12 @@
 import Hero from "@/components/Hero";
 
 import { fetchCars } from "@/utils";
+import { fuels, yearsOfProduction } from "@/constants";
+
 import SearchBar from "@/components/SearchBar";
 import CustomFilter from "@/components/CustomFilter";
 import CarCard from "@/components/CarCard";
-import { fuels, yearsOfProduction } from "@/constants";
+import ShowMore from "@/components/ShowMore";
 
 export default async function Home({searchParams}:any) {
 
@@ -22,7 +24,7 @@ export default async function Home({searchParams}:any) {
   return (
     <main className=" mx-auto">
       <Hero />
-      <div className="mt-12 sm:px-16 px-6 py-4  mx-auto" id="discover">
+      <div className="mt-12 sm:px-16 px-6 py-4 max-w-[1440px] mx-auto" id="discover">
       <div className="flex flex-col items-start justify-start gap-y-2.5 text-black-100">
         <h1 className="text-4xl font-extrabold">Catalogue</h1>
         <p>Explore the cars you might like</p>
@@ -40,8 +42,12 @@ export default async function Home({searchParams}:any) {
         {!isDataEmpty ? (
           <section>
             <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14">
-              {allCars.map(car => <CarCard car={car} />)}
-            </div>
+              {allCars.map((car, index) => <CarCard car={car} key={index} />)}
+            </div> 
+            <ShowMore 
+              pageNumber={(searchParams.limit || 10) / 10} 
+              isNext={(searchParams.limit || 10) > allCars.length}
+            />
           </section>
         ): (
           <div className="mt-16 flex justify-center items-center flex-col gap-2">
