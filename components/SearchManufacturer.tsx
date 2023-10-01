@@ -24,7 +24,7 @@ const SearchManufacturer = ({
         );
 
   return (
-    <div className="flex-1 max-sm:w-full flex justify-start items-center">
+    <div className="flex-1 max-sm:w-full flex justify-start items-center ">
       <Combobox value={manufacturer} onChange={setManufacturer} >
         <div className="relative w-full">
           <Combobox.Button className="absolute top-[14px]">
