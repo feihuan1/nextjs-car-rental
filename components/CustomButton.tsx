@@ -4,14 +4,16 @@ import Image from "next/image";
 import { CustomButtonProps } from "@/types";
 
 
-const CustomButton = ({ title, containerStyles, handleClick, btnType, textStyle, rightIcon }:CustomButtonProps) => {
+const CustomButton = ({ title, containerStyles, handleClick, btnType, textStyle, rightIcon, linkTo }:CustomButtonProps) => {
   return (
+    <a href={linkTo}>
+
     <button
       className={`flex flex-row relative justify-center items-center py-3 px-6 outline-none ${containerStyles}`}
       disabled={false}
       type={btnType || 'button'}
       onClick={handleClick}
-    >
+      >
       <span className={`flex-1 ${textStyle}`}>
         {title}
       </span>
@@ -21,6 +23,7 @@ const CustomButton = ({ title, containerStyles, handleClick, btnType, textStyle,
         </div>
       )}
     </button>
+      </a>
   );
 };
 

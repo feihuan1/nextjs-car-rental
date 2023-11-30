@@ -8,7 +8,8 @@ export interface CustomButtonProps {
     btnType?:'button' | 'submit',
     textStyle?: string,
     rightIcon?: string,
-    isDisabled?: boolean
+    isDisabled?: boolean,
+    linkTo?: string
 }
 
 export interface SearchManufacturerProps {

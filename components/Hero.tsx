@@ -18,6 +18,7 @@ const Hero = () => {
           process.
         </p>
         <CustomButton
+          linkTo='#discover'
           title="Explore Cars"
           containerStyles="bg-primary-blue text-white rounded-full mt-10"
           handleClick={handleScroll}
